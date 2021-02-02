@@ -18,24 +18,16 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- task: ArtifactoryGenericDownload@3
+- task: ArtifactoryNpm@2
   inputs:
-    connection: 'artifactory'
-    specSource: 'taskConfiguration'
-    fileSpec: |
-      {
-        "files": [
-          {
-            "pattern": "test/*.zip",
-            "target": "./"
-          }
-        ]
-      }
+    command: 'pack and publish'
+    artifactoryService: 'artifactory'
+    targetRepo: 'npm-local'
+    workingFolder: '/'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
     includeEnvVars: true
-    failNoOp: true
 - task: ArtifactoryXrayScan@1
   inputs:
     artifactoryService: 'artifactory'
