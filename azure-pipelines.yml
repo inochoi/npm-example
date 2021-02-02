@@ -36,3 +36,9 @@ steps:
     buildNumber: '$(Build.BuildNumber)'
     includeEnvVars: true
     failNoOp: true
+- task: ArtifactoryXrayScan@1
+  inputs:
+    artifactoryService: 'artifactory'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    allowFailBuild: true
