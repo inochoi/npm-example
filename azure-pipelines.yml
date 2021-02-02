@@ -24,6 +24,7 @@ steps:
     artifactoryService: 'artifactory'
     targetRepo: 'npm-local'
     workingFolder: '/'
+    arguments: 'jfrog rt npmc'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
